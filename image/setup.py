@@ -1,6 +1,7 @@
 import glob
+import setuptools
 from setuptools import setup, find_packages
-
+from setuptools.dist import Distribution
 
 DRAKE_VERSION = '0.32.0'
 
@@ -33,6 +34,15 @@ python_required = [
   "scipy"
 ]
 
+
+class BinaryDistribution(Distribution):
+    """Distribution which always forces a binary package with platform name"""
+    def is_pure(self):
+        return False
+    def has_ext_modules(self):
+        return True
+
+
 setup(name='pydrake',
       version=DRAKE_VERSION,
       description='Model-based design and verification for robotics',
@@ -44,6 +54,8 @@ heavy emphasis on optimization-based design/analysis.''',
       url='https://drake.mit.edu',
       author='Drake Development Team',
       author_email='drake-users@mit.edu',
+      distclass=BinaryDistribution,
+      platforms=["linux_x86_64"],
       packages=find_packages(),
       # Add in any packaged data.
       include_package_data=True,
@@ -51,5 +63,9 @@ heavy emphasis on optimization-based design/analysis.''',
         'pydrake': ['../.drake-find_resource-sentinel'] + docs + examples +
                    lib + manipulation + pydrake_lib
       },
-      install_requires=python_required
+      python_requires=">=3.6",
+      install_requires=python_required,
+      ext_modules=[
+           setuptools.Extension(name='pydrake',
+                                sources=[])]
       )
