@@ -39,7 +39,7 @@ cp -r /opt/drake/share/drake/manipulation /build-wheel/pydrake
 cp /image/setup.py /build-wheel
 
 # set LD_LIBRARY_PATH
-LD_LIBRARY_PATH=/build-wheel/pydrake
+LD_LIBRARY_PATH=/build-wheel/pydrake/lib
 export LD_LIBRARY_PATH
 
 # Navigate to temporary directory
