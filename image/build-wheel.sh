@@ -49,4 +49,4 @@ cd /build-wheel
 python3 setup.py bdist_wheel
 
 # Fixup wheel
-auditwheel repair dist/pydrake-${DRAKE_VERSION}-py3-none-any.whl
+auditwheel repair dist/pydrake*.whl
