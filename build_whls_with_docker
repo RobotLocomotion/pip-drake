@@ -7,11 +7,11 @@
 
 set -euxo pipefail
 
-rm -f drakewhl-*-x86_64.tar.gz
+rm -f pydrake*.whl
 
 docker build --tag drakewhl-bionic "${BASH_SOURCE%/*}"
 trap 'docker rmi drakewhl-bionic' EXIT
 docker run --detach --name drakewhl-bionic-build --tty drakewhl-bionic
 trap 'docker rm --force drakewhl-bionic-build && docker rmi drakewhl-bionic' EXIT
 docker cp drakewhl-bionic-build:$(docker exec drakewhl-bionic-build \
-  find /opt -maxdepth 1 -name 'drakewhl-*.tar.gz') .
+  find /build-wheel -maxdepth 1 -name 'pydrake*.whl') .
