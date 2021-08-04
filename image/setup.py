@@ -4,19 +4,17 @@ from setuptools import setup, find_packages
 
 DRAKE_VERSION = '0.32.0'
 
-# The paths passed to package_data are interpreted as relative to the
-# directory containing the package
-#
-# setup.py
-# pydrake/  <- package directory
-#    - .drake-find_resource-sentinel
-#    - doc/
-#    - examples/
-#    - lib/
-#    - manipulation/
+# build_wheel/
+#   - setup.py
+#   - pydrake/
+#      - .drake-find_resource-sentinel
+#      - doc/
+#      - examples/
+#      - lib/
+#      - manipulation/
 
 
-pydrake_lib = [f for f in glob.iglob("pydrake" + '**/*.so*', recursive=True)]
+pydrake_lib = ['../' + f for f in glob.iglob("pydrake" + '**/**', recursive=True) if '.so' in f]
 
 docs = ['../' + f for f in glob.iglob("pydrake/doc" + '**/**', recursive=True)]
 examples = ['../' + f for f in glob.iglob("pydrake/examples" + '**/**', recursive=True)]
