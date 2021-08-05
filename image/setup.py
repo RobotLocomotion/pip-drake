@@ -35,10 +35,11 @@ python_required = [
 ]
 
 
+# Distribution which always forces a binary package with platform name
 class BinaryDistribution(Distribution):
-    """Distribution which always forces a binary package with platform name"""
     def is_pure(self):
         return False
+
     def has_ext_modules(self):
         return True
 
@@ -46,7 +47,7 @@ class BinaryDistribution(Distribution):
 setup(name='pydrake',
       version=DRAKE_VERSION,
       description='Model-based design and verification for robotics',
-      long_description ='''Drake ("dragon" in Middle English) is a toolbox maintained by the Robot
+      long_description='''Drake ("dragon" in Middle English) is a toolbox maintained by the Robot
 Locomotion Group at the MIT Computer Science and Artificial Intelligence
 Lab (CSAIL). It is a collection of tools for analyzing the dynamics of
 robots and building control systems for them in C++ and Python, with a
@@ -54,7 +55,7 @@ heavy emphasis on optimization-based design/analysis.''',
       url='https://drake.mit.edu',
       author='Drake Development Team',
       author_email='drake-users@mit.edu',
-      classifiers[
+      classifiers=[
         'Development Status :: 4 - Beta',
         'Environment :: Console',
         'Intended Audience :: Developers',
@@ -78,12 +79,12 @@ heavy emphasis on optimization-based design/analysis.''',
       include_package_data=True,
       package_data={
         'pydrake': ['../.drake-find_resource-sentinel'] + docs + examples +
-                   lib + manipulation + pydrake_lib
+        lib + manipulation + pydrake_lib
       },
       python_requires='>=3.6',
       install_requires=python_required,
       ext_modules=[
            setuptools.Extension(name='pydrake',
                                 sources=[])],
-      zip_safe = False
-)
+      zip_safe=False
+      )

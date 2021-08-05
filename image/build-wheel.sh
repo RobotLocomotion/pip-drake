@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-DRAKE_VERSION=0.32.0
-
 cd /
 
 git clone https://github.com/robotlocomotion/drake
