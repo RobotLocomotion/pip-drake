@@ -54,8 +54,25 @@ heavy emphasis on optimization-based design/analysis.''',
       url='https://drake.mit.edu',
       author='Drake Development Team',
       author_email='drake-users@mit.edu',
+      classifiers[
+        'Development Status :: 4 - Beta',
+        'Environment :: Console',
+        'Intended Audience :: Developers',
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: BSD License',
+        'Operating System :: MacOS',
+        'Operating System :: POSIX :: Linux',
+        'Programming Language :: Python :: 3 :: Only',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: Implementation :: CPython',
+        'Topic :: Scientific/Engineering',
+        'Topic :: Software Development :: Libraries :: Python Modules'],
       distclass=BinaryDistribution,
-      platforms=["linux_x86_64"],
+      license='BSD 3-Clause License',
+      platforms=['linux_x86_64'],
       packages=find_packages(),
       # Add in any packaged data.
       include_package_data=True,
@@ -63,9 +80,10 @@ heavy emphasis on optimization-based design/analysis.''',
         'pydrake': ['../.drake-find_resource-sentinel'] + docs + examples +
                    lib + manipulation + pydrake_lib
       },
-      python_requires=">=3.6",
+      python_requires='>=3.6',
       install_requires=python_required,
       ext_modules=[
            setuptools.Extension(name='pydrake',
-                                sources=[])]
-      )
+                                sources=[])],
+      zip_safe = False
+)
