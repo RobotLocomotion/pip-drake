@@ -15,8 +15,10 @@ build()
     local id=$1
     shift 1
 
-    # Remove --force-rm if you need to inspect artifacts of a failed build
-    docker build --force-rm --tag $id "$@" "$(dirname "${BASH_SOURCE}")"
+    # Remove --force-rm if you need to inspect artifacts of a failed build.
+    # TODO(jwnimmer-tri) Figure out where buildkit stores its caches, so that
+    # we know how to clean them up once we no longer need them.
+    DOCKER_BUILDKIT=1 docker build --force-rm --tag $id "$@" "$(dirname "${BASH_SOURCE}")"
     trap "docker image rm $id" EXIT
 }
 
