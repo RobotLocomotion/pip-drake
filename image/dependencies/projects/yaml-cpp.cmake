@@ -11,3 +11,9 @@ ExternalProject_Add(yaml-cpp
         -DYAML_CPP_BUILD_TESTS:BOOL=OFF
         -DYAML_CPP_BUILD_TOOLS:BOOL=OFF
 )
+
+ExternalProject_Add_Step(
+  yaml-cpp CopyLicense
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/yaml-cpp/LICENSE ${LICENSE_DIR}/yaml-cpp/LICENSE
+  DEPENDEES install
+)

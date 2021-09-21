@@ -11,3 +11,5 @@ ExternalProject_Add(zlib
         -Dzlib_source=${CMAKE_BINARY_DIR}/src/zlib
         -P ${CMAKE_SOURCE_DIR}/patches/zlib/patch.cmake
 )
+
+# TODO: LICENSE ?

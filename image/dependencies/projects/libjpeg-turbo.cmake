@@ -18,3 +18,10 @@ ExternalProject_Add(libjpeg-turbo
     BUILD_COMMAND make
     INSTALL_COMMAND make install
     )
+
+# LICENSE file does not exist in 1.4.0
+ExternalProject_Add_Step(
+  libjpeg-turbo CopyLicense
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/libjpeg-turbo/README ${LICENSE_DIR}/libjpeg-turbo/README
+  DEPENDEES install
+)

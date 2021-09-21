@@ -12,3 +12,9 @@ ExternalProject_Add(lz4
         PREFIX=${CMAKE_INSTALL_PREFIX}
         install
     )
+
+ExternalProject_Add_Step(
+  lz4 CopyLicense
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/lz4/lib/LICENSE ${LICENSE_DIR}/lz4/LICENSE
+  DEPENDEES install
+)

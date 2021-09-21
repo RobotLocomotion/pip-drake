@@ -31,6 +31,7 @@ set (COMMON_CMAKE_ARGS
     -DCMAKE_INSTALL_PREFIX:PATH=${CMAKE_INSTALL_PREFIX}
     )
 
+set(LICENSE_DIR ${CMAKE_INSTALL_PREFIX}/licenses)
 set_property(DIRECTORY PROPERTY EP_STEP_TARGETS download)
 foreach(project ${ALL_PROJECTS})
     include(projects/${project}.cmake)

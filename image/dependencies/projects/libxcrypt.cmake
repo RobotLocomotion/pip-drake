@@ -15,3 +15,10 @@ ExternalProject_Add(libxcrypt
     BUILD_COMMAND make
     INSTALL_COMMAND make install
     )
+
+ExternalProject_Add_Step(
+  libxcrypt CopyLicense
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/libxcrypt/LICENSING ${LICENSE_DIR}/libxcrypt/LICENSING
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/libxcrypt/COPYING.LIB ${LICENSE_DIR}/libxcrypt/COPYING.LIB
+  DEPENDEES install
+)

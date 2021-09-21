@@ -13,3 +13,10 @@ ExternalProject_Add(suitesparse
     BUILD_COMMAND make
     INSTALL_COMMAND make install
     )
+
+# TODO: No license file in v 4.4.5
+#ExternalProject_Add_Step(
+#  suitesparse CopyLicense
+#  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/suitesparse/LICENSE.txt ${LICENSE_DIR}/suitesparse/LICENSE.txt
+#  DEPENDEES install
+#)

@@ -7,3 +7,9 @@ ExternalProject_Add(gflags
     CMAKE_ARGS
         ${COMMON_CMAKE_ARGS}
     )
+
+ExternalProject_Add_Step(
+  gflags CopyLicense
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/gflags/COPYING.txt ${LICENSE_DIR}/gflags/COPYING.txt
+  DEPENDEES install
+)

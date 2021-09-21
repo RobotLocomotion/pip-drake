@@ -10,3 +10,9 @@ ExternalProject_Add(png
         -DZLIB_INCLUDE_DIR:PATH=${CMAKE_INSTALL_PREFIX}/include
         -DZLIB_LIBRARY:PATH=${CMAKE_INSTALL_PREFIX}/lib/libz.a
     )
+
+ExternalProject_Add_Step(
+  png CopyLicense
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/png/LICENSE ${LICENSE_DIR}/png/LICENSE
+  DEPENDEES install
+)

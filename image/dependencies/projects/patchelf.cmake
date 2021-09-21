@@ -12,3 +12,9 @@ ExternalProject_Add(patchelf
     BUILD_COMMAND make
     INSTALL_COMMAND make install
     )
+
+ExternalProject_Add_Step(
+  patchelf CopyLicense
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/patchelf/COPYING ${LICENSE_DIR}/patchelf/COPYING
+  DEPENDEES install
+)

@@ -14,3 +14,9 @@ ExternalProject_Add(libtiff
         -DZLIB_LIBRARY_DEBUG=${CMAKE_INSTALL_PREFIX}/lib/libz.a
         -DZLIB_LIBRARY_RELEASE=${CMAKE_INSTALL_PREFIX}/lib/libz.a
         )
+
+ExternalProject_Add_Step(
+  libtiff CopyLicense
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/libtiff/COPYRIGHT ${LICENSE_DIR}/libtiff/COPYRIGHT
+  DEPENDEES install
+)

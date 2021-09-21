@@ -8,3 +8,9 @@ ExternalProject_Add(lapack
         ${COMMON_CMAKE_ARGS}
         -DCBLAS=ON
 )
+
+ExternalProject_Add_Step(
+  lapack CopyLicense
+  COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_BINARY_DIR}/src/lapack/LICENSE ${LICENSE_DIR}/lapack/LICENSE
+  DEPENDEES install
+)

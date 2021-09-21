@@ -4,3 +4,5 @@ file(WRITE ${CMAKE_INSTALL_PREFIX}/share/pkgconfig/clp.pc
     "Version: 0\n"
     "Description:\n"
     )
+
+# TODO: LICENSE
