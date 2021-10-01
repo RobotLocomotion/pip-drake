@@ -6,6 +6,8 @@ BAZEL_ROOT=https://github.com/bazelbuild/bazel/releases/download
 # Install prerequisites
 apt-get -y update
 
+apt-get -y install --reinstall ca-certificates
+
 apt-get -y install --no-install-recommends \
     default-jdk \
     autoconf automake \
